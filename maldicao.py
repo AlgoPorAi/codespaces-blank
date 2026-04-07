@@ -1,0 +1,6 @@
+print("Hello World!")
+nome = input("Digite seu nome: ")
+print(f"Hello, {nome}!")
+valor1 = int(input("digite um valor: "))
+valor2 = int(input("digite outro valor: "))
+print(f"A soma de {valor1} + {valor2} é {valor1+valor2}")
