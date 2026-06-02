@@ -1,6 +1,6 @@
 # 🎮 Adivinhe o Número
 
-Adivinhe o número é um jogo de adivinhação feito em Phython na disciplina PCAP (Aula 16). O computador sorteia um número e você tenta descobrir dentro de um limite de chances. Tem 3 níveis: Fácil, Médio e Impossível.
+Adivinhe o número é um jogo de adivinhação feito em Phython na disciplina PCAP (Aula 16). O computador sorteia um número e você tenta descobrir dentro de um limite de chances predefinido por dificuldade. Tem 3 níveis: Fácil, Médio e Impossível.
 
 ## ▶️ Como jogar
 1. Abra o terminal na pasta do jogo.
@@ -13,6 +13,6 @@ Adivinhe o número é um jogo de adivinhação feito em Phython na disciplina PC
 - Impossível .. 1 a 1000, 10 chances
 
 ## 🧠 O que eu pratiquei
-Variáveis e tipos, operadores, entrada/saída, decisão (if/elif/else), repetição (while), sub-rotinas (def/return) e listas.
+Variáveis e tipos (número selecionado), operadores (chances = chances - 1), entrada/saída (input), decisão (if/elif/else), repetição (while), sub-rotinas (def/return) e listas.
 
 Autor: Lorenzo Waselik
