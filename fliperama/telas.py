@@ -7,15 +7,15 @@
 # Conceitos: 
 # ==================================
 
-# Definição da moldura (Caracteres e Tamanho)
-CAR = "#"
+# Definicao da moldura (Caracteres e Tamanho)
+CAR = "="
 TAM = 40
 
-# Função para desenhar uma linha na tela
+# Funcao para desenhar uma linha na tela
 def linha():
     print(CAR * TAM)
 
-# Função para desenhar um texto entre linhas
+# Funcao para desenhar um texto entre linhas
 def titulo(texto):
     linha()
     print(texto.center(TAM))

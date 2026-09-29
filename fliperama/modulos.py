@@ -10,7 +10,7 @@
 def ler_opcao(mensagem, validas):
     resposta = input(mensagem + ": ").strip()
     while resposta not in validas:
-        print("Opção inválida! Tente novamente.")
+        print("Opcao invalida! Tente novamente.")
         resposta = input(mensagem + ": ").strip()
     return resposta
 
@@ -19,3 +19,11 @@ def ler_numero(mensagem, minimo, maximo):
     for n in range(minimo, maximo + 1):
         numeros.append(str(n))
     return int(ler_opcao(mensagem, numeros))
+
+def ler_texto(mensagem):
+    resposta = input(mensagem + ': ').strip()
+    while resposta == '':
+        print('Nao pode ficar em branco! Tente de novo.')
+        resposta = input(mensagem + ': ').strip()
+    return resposta
+        

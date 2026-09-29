@@ -24,13 +24,13 @@ def jogar_adivinhe():
         tentativas += 1
 
         if palpite < segredo:
-            print("O número secreto é maior. Tente novamente.")
+            print("O numero secreto e maior. Tente novamente.")
         elif palpite > segredo:
-            print("O número secreto é menor. Tente novamente.")
+            print("O numero secreto e menor. Tente novamente.")
         else:
             acertou = True
 
     else:
         linha()
-        print(f"Parabéns! Você acertou o número secreto {segredo} em {tentativas} tentativas.")
+        print(f"Parabens! Voce acertou o numero secreto {segredo} em {tentativas} tentativas.")
         linha()
