@@ -6,10 +6,13 @@ LIAC        : Menu com validacao
 */
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define DONO "LORENZO"
 #define CAPACIDADE 50
 #define TAM_APELIDO 20
+#define ARQUIVO "jogadores.csv"
 
 void linha() {
     printf("==========================================\n");
@@ -81,6 +84,61 @@ void listar(char apelidos[][TAM_APELIDO], int partidas[], int qtd) {
     }
 }
 
+void jogar_adivinhe(char apelidos[][TAM_APELIDO], int partidas[], int qtd) {
+    char quem[TAM_APELIDO];
+    int pos, segredo, palpite, tentativas;
+
+    titulo("ADIVINHE O NUMERO");
+    ler_texto("Quem vai jogar", quem);
+    pos = buscar(apelidos, qtd, quem);
+    if (pos == -1) {
+        printf("Cadastre esse apelido antes de jogar.\n");
+        return;
+    }
+
+    partidas[pos] = partidas[pos] + 1;
+    segredo = rand() % 100 + 1;
+    printf("Pensei num numero de 1 a 100.\n");
+
+    palpite = ler_numero("Seu palpite", 1, 100);
+    tentativas = 1;
+    while (palpite != segredo) {
+        if (palpite < segredo) {
+            printf("Maior!\n");
+        } else {
+            printf("Menor!\n");
+        }
+        palpite = ler_numero("Seu palpite", 1, 100);
+        tentativas = tentativas + 1;
+    }
+    printf("Acertou em %d tentativas, %s!\n", tentativas, quem);
+    
+}
+
+void salvar(char apelidos[][TAM_APELIDO], int partidas[], int qtd) {
+    FILE *arquivo = fopen(ARQUIVO, "w");
+    int i;
+
+    for (i = 0; i < qtd; i++) {
+        fprintf(arquivo, "%s,%d\n", apelidos[i], partidas[i]);
+    }
+    fclose(arquivo);
+}
+
+int carregar(char apelidos[][TAM_APELIDO], int partidas[]) {
+    FILE *arquivo = fopen(ARQUIVO, "r");
+    int qtd = 0;
+
+    if (arquivo == NULL) {
+        return 0;
+    }
+    while (qtd < CAPACIDADE && fscanf(arquivo, "%19[^,],%d\n", apelidos[qtd], &partidas[qtd]) == 2) {
+        qtd = qtd + 1;
+    }
+    fclose(arquivo);
+    return qtd;
+}
+
 void mostrar_menu() {
     linha();
     printf("    FLIPERAMA DO %s\n", DONO);
@@ -97,13 +155,14 @@ int main() {
     int partidas[CAPACIDADE];
     int qtd, opcao;
 
-    qtd = 0;
+    srand(time(NULL));
+    qtd = carregar(apelidos, partidas);
 
     mostrar_menu();
     opcao = ler_numero("Sua escolha", 0, 3);
     while (opcao != 0) {
         if (opcao == 1) {
-            printf("O jogo entra na Fase 3.\n");
+            jogar_adivinhe(apelidos, partidas, qtd);
         } else if (opcao == 2) {
             qtd = cadastrar(apelidos, partidas, qtd);
         } else {
@@ -113,6 +172,7 @@ int main() {
         opcao = ler_numero("Sua escolha", 0, 3);
     }
 
+    salvar(apelidos, partidas, qtd);
     titulo("Ate a proxima!");
     return 0;
 }
