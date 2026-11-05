@@ -2,7 +2,7 @@
 Disciplina  : 2026-PCAP
 Problema    : BeeCrowd 1332 - Um-Dois-Tres
 Autor       : Lorenzo Waselik
-LIAC        : 
+LIAC        : Le um numero que determina quantas entradas tera e nas entradas e digitado um numero de um a tres, de forma errada, mas mesmo assim na saida e digitado os numeros corretamente
 */
 #include <iostream>
 #include <string>
